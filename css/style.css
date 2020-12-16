@@ -1,0 +1,123 @@
+:root {
+	--waitTime: 0.5s;
+	--background-animation: 0.5s;
+}
+
+html,
+body {
+	height: 100%;
+	margin: 0;
+	overflow: hidden;
+}
+
+.container {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.flashy_background {
+	-webkit-animation: color_change var(--background-animation) infinite
+		alternate;
+	-moz-animation: color_change var(--background-animation) infinite alternate;
+	-ms-animation: color_change var(--background-animation) infinite alternate;
+	-o-animation: color_change var(--background-animation) infinite alternate;
+	animation: color_change var(--background-animation) infinite alternate;
+}
+
+.doomguy_image {
+	transition: var(--waitTime);
+}
+
+.doomguy.doomguy_click_pointer {
+	cursor: pointer;
+}
+
+
+.doomguy.godmode {
+	animation: shake 0.2s infinite;
+	z-index: 200;
+}
+
+.doomface {
+	/* visibility: hidden; */
+	position: absolute;
+}
+
+@keyframes shake {
+	0% {
+		transform: translate(1px, 1px) rotate(0deg);
+	}
+	10% {
+		transform: translate(-1px, -2px) rotate(-1deg);
+	}
+	20% {
+		transform: translate(-3px, 0px) rotate(1deg);
+	}
+	30% {
+		transform: translate(3px, 2px) rotate(0deg);
+	}
+	40% {
+		transform: translate(1px, -1px) rotate(1deg);
+	}
+	50% {
+		transform: translate(-1px, 2px) rotate(-1deg);
+	}
+	60% {
+		transform: translate(-3px, 1px) rotate(0deg);
+	}
+	70% {
+		transform: translate(3px, 1px) rotate(-1deg);
+	}
+	80% {
+		transform: translate(-1px, -1px) rotate(1deg);
+	}
+	90% {
+		transform: translate(1px, 2px) rotate(0deg);
+	}
+	100% {
+		transform: translate(1px, -2px) rotate(-1deg);
+	}
+}
+
+@-webkit-keyframes color_change {
+	from {
+		background-color: #453f3d;
+	}
+	to {
+		background-color: #660000;
+	}
+}
+@-moz-keyframes color_change {
+	from {
+		background-color: #453f3d;
+	}
+	to {
+		background-color: #660000;
+	}
+}
+@-ms-keyframes color_change {
+	from {
+		background-color: #453f3d;
+	}
+	to {
+		background-color: #660000;
+	}
+}
+@-o-keyframes color_change {
+	from {
+		background-color: #453f3d;
+	}
+	to {
+		background-color: #660000;
+	}
+}
+@keyframes color_change {
+	from {
+		background-color: #453f3d;
+	}
+	to {
+		background-color: #660000;
+	}
+}
