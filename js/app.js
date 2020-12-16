@@ -1,3 +1,17 @@
+const randomFaces = [
+	'ressources/hammer.png',
+	'ressources/tiny_happy.png',
+	'ressources/tiny_oof.png',
+	'ressources/tiny_riant_a_gorge_deployee.png',
+	'ressources/tiny_wink.png'
+]
+
+let isPasContentModeStarted = false
+const body = document.querySelector('body')
+const container = document.querySelector('.container')
+const tallContainer = document.querySelector('.tall')
+const tallImage = document.querySelector('.tall_image')
+
 class randomTinyFace {
 	constructor(element, options = {}) {
 		this.element = element
@@ -154,24 +168,9 @@ function createRandomTinyFace() {
 	})
 }
 
-const randomFaces = [
-	'ressources/hammer.png',
-	'ressources/tiny_happy.png',
-	'ressources/tiny_oof.png',
-	'ressources/tiny_riant_a_gorge_deployee.png',
-	'ressources/tiny_wink.png'
-]
-
-let started = false
-const body = document.querySelector('body')
-const container = document.querySelector('.container')
-const tallContainer = document.querySelector('.tall')
-const tallImage = document.querySelector('.tall_image')
-
-
 tallContainer.addEventListener('click', () => {
-	if (started === false) {
-		started = true
+	if (!isPasContentModeStarted) {
+		isPasContentModeStarted = true
 		tallContainer.classList.remove('click_pointer')
 		initiatePasContentMode()
 	}
