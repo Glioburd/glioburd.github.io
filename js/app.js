@@ -1,4 +1,4 @@
-class randomDoomFace {
+class randomTinyFace {
 	constructor(element, options = {}) {
 		this.element = element
 
@@ -17,19 +17,19 @@ class randomDoomFace {
 		this.position = this.options.position
 
 		/* DOM manipulation */
-		this.div = this.createDivWithClass('doomface')
-		this.img = this.createImageWithClass('doomface_png')
+		this.div = this.createDivWithClass('tinyface')
+		this.img = this.createImage()
 
 		this.div.appendChild(this.img)
 		this.element.prepend(this.div)
 
-		this.positionDoomFace(this.div)
-		const animation = this.animateDoomFace(this.div)
-		animation.onfinish = () => this.destroyDoomFace(this.div)
+		this.positionTinyFace(this.div)
+		const animation = this.animateTinyFace(this.div)
+		animation.onfinish = () => this.destroyTinyFace(this.div)
 	}
 
 	/**
-	 * Calculate length of doomFace animation according to its height
+	 * Calculate length of tinyFace animation according to its height
 	 * (Big face : 1 second, smallest face : 10 seconds)
 	 * @param {int} height
 	 * @returns {int}
@@ -39,19 +39,19 @@ class randomDoomFace {
 	}
 
 	/**
-	 * Destroy doomFace div
+	 * Destroy tinyFace div
 	 * @param {HTMLElement} div
 	 */
-	destroyDoomFace(div) {
+	destroyTinyFace(div) {
 		div.remove()
 	}
 
 	/**
-	 * A random doom face is falling from the sky
+	 * A random Tiny face is falling from the sky!
 	 * @param {HTMLElement} div
 	 * @returns {HTMLElement}
 	 */
-	animateDoomFace(div) {
+	animateTinyFace(div) {
 		const keyFrames = [
 			{
 				// from
@@ -71,11 +71,11 @@ class randomDoomFace {
 	}
 
 	/**
-	 * Set the doomFace on a random horizontal position
+	 * Set the tinyFace on a random horizontal position
 	 * Set its z-index accordingly to is height
 	 * @param {HTMLElement} div
 	 */
-	positionDoomFace(div) {
+	positionTinyFace(div) {
 		div.style.left = `${this.getRandomPosition(100)}%`
 		div.style.top = `-${div.offsetHeight}px`
 		div.style.zIndex = div.offsetHeight
@@ -97,10 +97,9 @@ class randomDoomFace {
 	 * @param {string} className
 	 * @returns {HTMLElement}
 	 */
-	createImageWithClass(className) {
+	createImage() {
 		let img = document.createElement('img')
-		img.setAttribute('class', className)
-		img.setAttribute('alt', 'randomDoomFace')
+		img.setAttribute('alt', 'randomTinyFace')
 		img.setAttribute('src', this.options.face)
 		img.style.height = this.options.height + 'px'
 		return img
@@ -117,27 +116,27 @@ class randomDoomFace {
 	}
 }
 
-function godMode() {
-	doomGuyContainer.classList.add('godmode')
+function pasContentMode() {
+	tallContainer.classList.add('godmode')
 	container.classList.add('flashy_background')
 	const music = document.querySelector('#doom_music')
 	music.play()
 	music.volume = 0.1
 	setInterval(() => {
-		createRandomDoomFace()
+		createRandomTinyFace()
 	}, 500)
 }
 
-function initiateGodMode() {
-	doomGuy.src = 'ressources/tall_inveigh.png'
-	doomGuy.style.transform = 'scale(2)'
+function initiatePasContentMode() {
+	tallImage.src = 'ressources/tall_inveigh.png'
+	tallImage.style.transform = 'scale(3)'
 	setTimeout(() => {
-		doomGuy.src = 'ressources/tall_discontent.png'
-		doomGuy.style.transform = 'scale(4) rotate(2880deg)'
-		doomGuy.addEventListener('transitionend', () => {
-			godMode()
+		tallImage.src = 'ressources/tall_discontent.png'
+		tallImage.style.transform = 'scale(5) rotate(2880deg)'
+		tallImage.addEventListener('transitionend', () => {
+			pasContentMode()
 		})
-	}, 3000)
+	}, 2000)
 }
 
 function getRandomIntFromRange(min, max) {
@@ -148,8 +147,8 @@ function getRandomElementFromArray(array) {
 	return array[Math.floor(Math.random() * array.length)]
 }
 
-function createRandomDoomFace() {
-	return new randomDoomFace(body, {
+function createRandomTinyFace() {
+	return new randomTinyFace(body, {
 		face: getRandomElementFromArray(randomFaces),
 		height: getRandomIntFromRange(30, 300)
 	})
@@ -166,14 +165,14 @@ const randomFaces = [
 let started = false
 const body = document.querySelector('body')
 const container = document.querySelector('.container')
-const doomGuyContainer = document.querySelector('.doomguy')
-const doomGuy = document.querySelector('.doomguy_image')
+const tallContainer = document.querySelector('.tall')
+const tallImage = document.querySelector('.tall_image')
 
 
-doomGuyContainer.addEventListener('click', () => {
+tallContainer.addEventListener('click', () => {
 	if (started === false) {
 		started = true
-		doomGuyContainer.classList.remove('doomguy_click_pointer')
-		initiateGodMode()
+		tallContainer.classList.remove('click_pointer')
+		initiatePasContentMode()
 	}
 })

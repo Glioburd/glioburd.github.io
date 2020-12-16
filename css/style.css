@@ -26,21 +26,21 @@ body {
 	animation: color_change var(--background-animation) infinite alternate;
 }
 
-.doomguy_image {
+.tall_image {
 	transition: var(--waitTime);
 }
 
-.doomguy.doomguy_click_pointer {
+.click_pointer {
 	cursor: pointer;
 }
 
 
-.doomguy.godmode {
+.tall.godmode {
 	animation: shake 0.2s infinite;
 	z-index: 200;
 }
 
-.doomface {
+.tinyface {
 	/* visibility: hidden; */
 	position: absolute;
 }
